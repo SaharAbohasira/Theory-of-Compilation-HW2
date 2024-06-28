@@ -80,6 +80,7 @@ Exp: LPAREN Exp RPAREN                                          {printProduction
 
 int main(){
     return yyparser();
+}
 
 int yyerror(const char * merror){
     errorSyn(yylineno);
