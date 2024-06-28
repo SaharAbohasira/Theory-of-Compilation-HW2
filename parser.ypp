@@ -28,9 +28,9 @@ Program: Statements                                             {printProduction
 
 Statements: Statement                                           {printProductionRule(2);}
             | Statements Statement                              {printProductionRule(3);}
-            | LBRACE Statements RBRACE                          {printProductionRule(4);}
 
-Statement: Type ID SC                                           {printProductionRule(5);}
+Statement: LBRACE Statements RBRACE                             {printProductionRule(4);}
+           | Type ID SC                                         {printProductionRule(5);}
            | Type ID ASSIGN Exp SC                              {printProductionRule(6);}
            | Call SC                                            {printProductionRule(7);}
            | RETURN SC                                          {printProductionRule(8);}
