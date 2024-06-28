@@ -28,6 +28,8 @@
 %right ASSIGN
 %left OR
 %left AND
+%left EQUALITY
+%left RELATIONAL
 %left ADD_SUB
 %left MULT_DIV
 %right NOT
