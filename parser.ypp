@@ -3,6 +3,7 @@
         #include "output.hpp"
 
         using namespace std;
+        using namespace output;
         extern int yylineno;
         int yylex();
         int yyerror(const char * merror);
