@@ -32,7 +32,7 @@ continue                                            return CONTINUE;
 \}                                                  return RBRACE;
 =                                                   return ASSIGN;
 ==|!=                                               return EQUALITY;
-<|>|<=|>=                                           return RELATIONAL;
+>|<|<=|>=                                           return RELATIONAL;
 \+|\-                                               return ADD_SUB;
 \*|\\                                               return MULT_DIV;
 [a-zA-Z][a-zA-Z0-9]*                                return ID;
