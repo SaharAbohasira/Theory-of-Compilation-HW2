@@ -14,8 +14,7 @@
 %right ASSIGN
 %left OR
 %left AND
-%left EQUALITY
-%left RELATIONAL
+%left RELOP
 %left ADD_SUB
 %left MULT_DIV
 %right NOT
@@ -60,8 +59,7 @@ Exp: LPAREN Exp RPAREN                                          {printProduction
      | NOT Exp                                                  {printProductionRule(28);}
      | Exp AND Exp                                              {printProductionRule(29);}
      | Exp OR Exp                                               {printProductionRule(30);}
-     | Exp RELATIONAL Exp                                       {printProductionRule(31);}
-     | Exp EQUALITY Exp                                         {printProductionRule(31);}
+     | Exp RELOP Exp                                            {printProductionRule(31);}
      | LPAREN Type RPAREN Exp                                   {printProductionRule(32);}
 %%
 
