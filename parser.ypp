@@ -1,0 +1,84 @@
+%{
+        #include <iostream>
+        #include "output.hpp"
+
+        using namespace std;
+        extern int yylineno;
+        int yylex();
+        int yyerror(const char * merror);
+%}
+
+%token INT
+%token BYTE
+%token B
+%token BOOL
+%token TRUE
+%token FALSE
+%token RETURN
+%token IF
+%right ELSE
+%token WHILE
+%token BREAK
+%token CONTINUE
+%token SC
+%token ID
+%token NUM
+%token STRING
+
+%right ASSIGN
+%left OR
+%left AND
+%left ADD_SUB
+%left MULT_DIV
+%right NOT
+%left LPAREN RPAREN LBRACE RBRACE
+
+%%
+
+Program: Statements                                             {printProductionRule(1);}
+
+Statements: Statement                                           {printProductionRule(2);}
+            | Statements Statement                              {printProductionRule(3);}
+            | LBRACE Statements RBRACE                          {printProductionRule(4);}
+
+Statement: Type ID SC                                           {printProductionRule(5);}
+           | Type ID ASSIGN Exp SC                              {printProductionRule(6);}
+           | Call SC                                            {printProductionRule(7);}
+           | RETURN SC                                          {printProductionRule(8);}
+           | IF LPAREN Exp RPAREN Statement                     {printProductionRule(9);}
+           | IF LPAREN Exp RPAREN Statement ELSE Statement      {printProductionRule(10);}
+           | WHILE LPAREN Exp RPAREN Statement                  {printProductionRule(11);}
+           | BREAK SC                                           {printProductionRule(12);}
+           | CONTINUE SC                                        {printProductionRule(13);}
+
+Call: ID LPAREN Exp RPAREN                                      {printProductionRule(14);}
+
+Type: INT                                                       {printProductionRule(15);}
+      | BYTE                                                    {printProductionRule(16);}
+      | BOOL                                                    {printProductionRule(17);}
+
+Exp: LPAREN Exp RPAREN                                          {printProductionRule(18);}
+     | Exp MULT_DIV Exp                                         {printProductionRule(19);}
+     | Exp ADD_SUB Exp                                          {printProductionRule(19);}
+     | ID                                                       {printProductionRule(20);}
+     | Call                                                     {printProductionRule(21);}
+     | NUM                                                      {printProductionRule(22);}
+     | NUM B                                                    {printProductionRule(23);}
+     | STRING                                                   {printProductionRule(24);}
+     | TRUE                                                     {printProductionRule(25);}
+     | FALSE                                                    {printProductionRule(26);}
+     | NOT Exp                                                  {printProductionRule(27);}
+     | Exp AND Exp                                              {printProductionRule(28);}
+     | Exp OR Exp                                               {printProductionRule(29);}
+     | Exp RELATIONAL Exp                                       {printProductionRule(30);}
+     | Exp EQUALITY Exp                                         {printProductionRule(30);}
+     | LPAREN Type RPAREN Exp                                   {printProductionRule(31);}
+%%
+
+int main(){
+    return yyparser();
+
+int yyerror(const char * merror){
+    errorSyn(yylineno);
+    exit(0);
+}
