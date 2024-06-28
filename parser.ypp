@@ -79,7 +79,7 @@ Exp: LPAREN Exp RPAREN                                          {printProduction
 %%
 
 int main(){
-    return yyparser();
+    return yyparse();
 }
 
 int yyerror(const char * merror){
