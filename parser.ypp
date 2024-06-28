@@ -16,7 +16,6 @@
 %token FALSE
 %token RETURN
 %token IF
-%right ELSE
 %token WHILE
 %token BREAK
 %token CONTINUE
@@ -34,6 +33,7 @@
 %left MULT_DIV
 %right NOT
 %left LPAREN RPAREN LBRACE RBRACE
+%right ELSE
 
 %%
 
