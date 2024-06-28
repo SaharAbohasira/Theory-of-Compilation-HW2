@@ -9,21 +9,7 @@
         int yyerror(const char * merror);
 %}
 
-%token INT
-%token BYTE
-%token B
-%token BOOL
-%token TRUE
-%token FALSE
-%token RETURN
-%token IF
-%token WHILE
-%token BREAK
-%token CONTINUE
-%token SC
-%token ID
-%token NUM
-%token STRING
+%token INT BYTE B BOOL TRUE FALSE RETURN IF WHILE BREAK CONTINUE SC ID NUM STRING
 
 %right ASSIGN
 %left OR
