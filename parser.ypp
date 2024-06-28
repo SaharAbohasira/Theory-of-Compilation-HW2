@@ -5,7 +5,7 @@
         using namespace std;
         using namespace output;
         extern int yylineno;
-        int yylex();
+        extern int yylex();
         int yyerror(const char * merror);
 %}
 
