@@ -39,4 +39,5 @@ continue                                            return CONTINUE;
 0|([1-9][0-9]*)                                     return NUM;
 \"([^\n\r"\\]\\[rnt"\\])+\"                         return STRING;
 {whitespace}                                        ;
+\/\/[^\n\r]*[\r|\n|\r\n]?                           ;
 .                                                   {output::errorLex(yylineno); exit(0);}
